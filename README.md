@@ -12,6 +12,9 @@ This project is a clone of the WhatsApp Web user interface, implemented using HT
 - Message Timestamps: Each message displays a timestamp indicating when it was sent or received.
 - Hover Effects: Interactive hover effects are implemented for contact list items and buttons to enhance the user experience.
 
+## Screenshot
+![My Image](demo.png)
+
 ## Usage
 
 To use the WhatsApp Web clone:
