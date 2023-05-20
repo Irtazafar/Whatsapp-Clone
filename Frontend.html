@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhatsApp Web Clone</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div class="sidebar">
+      <div class="header">
+        <div class="avatar">
+          <img src="avatar.jpg" alt="Avatar">
+        </div>
+        <div class="info">
+          <h4 class="name">John Doe</h4>
+          <p class="status">Online</p>
+        </div>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Search contacts">
+      </div>
+      <div class="contacts">
+        <div class="contact" @click="selectContact(contact)" v-for="contact in contacts" :key="contact.id">
+          <div class="avatar">
+            <img :src="contact.avatar" alt="Avatar">
+          </div>
+          <div class="info">
+            <h5 class="name">{{ contact.name }}</h5>
+            <p class="status">{{ contact.status }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-window">
+      <div class="header">
+        <div class="avatar">
+          <img :src="selectedContact.avatar" alt="Avatar">
+        </div>
+        <div class="info">
+          <h4 class="name">{{ selectedContact.name }}</h4>
+          <p class="status">{{ selectedContact.status }}</p>
+        </div>
+      </div>
+      <div class="messages">
+        <div class="message" v-for="message in selectedContact.messages" :key="message.id" :class="{ sent: message.sender === 'John Doe', received: message.sender !== 'John Doe' }">
+          <!-- <div class="avatar">
+            <img :src="message.avatar" alt="Avatar">
+          </div> -->
+          <div class="content">
+            <p class="content-text">{{ message.content }}</p>
+            <span class="timestamp">{{ message.timestamp }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="message-input">
+        <input type="text" v-model="newMessage" placeholder="Type a message...">
+        <button class="send-button" @click="sendMessage">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
